@@ -10,8 +10,6 @@ def printBoard(board):
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
    
 
-
-
 def spaceIsFree(position):
     if(board[position] == ' '):
         return True
@@ -191,3 +189,5 @@ while not(checkWin()):
     
     playerMove()
     compMove()
+
+exit()
