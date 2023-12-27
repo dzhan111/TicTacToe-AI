@@ -130,23 +130,23 @@ def minimax(board, depth, isMaximizing):
             if(board[key] == ' '):
                 board[key] = comp
                 score = minimax(board,0,False)
-                #undo board
+                #undo move
                 board[key] = ' '
 
                 #if current best move, update the bests
                 bestScore = max(score,bestScore)
         return bestScore
 
-    #minimizing 
+    #minimizing player
     else: 
         bestScore = 100000
 
         #see all available moves from here
         for key in board.keys():
             if(board[key] == ' '):
-                board[key] = comp
+                board[key] = player
                 score = minimax(board,0,True)
-                #undo board
+                #undo move
                 board[key] = ' '
 
                 #if current best move, update the bests
@@ -159,33 +159,35 @@ def minimax(board, depth, isMaximizing):
 
 def checkWhoWon(mark):
     #horizontal rows
-    if(board[1] == board[2] and board[2] == board[3] and board[3] != mark):
+    if(board[1] == board[2] and board[2] == board[3] and board[3] == mark):
         return True
-    elif(board[4] == board[5] and board[5] == board[6] and board[6] != mark):
+    elif(board[4] == board[5] and board[5] == board[6] and board[6] == mark):
         return True
-    elif(board[7] == board[8] and board[8] == board[9] and board[9] != mark):
+    elif(board[7] == board[8] and board[8] == board[9] and board[9] == mark):
         return True
     
     #vertical rows
-    elif(board[1] == board[4] and board[4] == board[7] and board[7] != mark):
+    elif(board[1] == board[4] and board[4] == board[7] and board[7] == mark):
         return True
-    elif(board[2] == board[5] and board[5] == board[8] and board[8] != mark):
+    elif(board[2] == board[5] and board[5] == board[8] and board[8] == mark):
         return True
-    elif(board[3] == board[6] and board[6] == board[9] and board[9] != mark):
+    elif(board[3] == board[6] and board[6] == board[9] and board[9] == mark):
         return True
     
     #diagonals
-    elif(board[1] == board[5] and board[5] == board[9] and board[9] != mark):
+    elif(board[1] == board[5] and board[5] == board[9] and board[9] == mark):
         return True
-    elif(board[3] == board[5] and board[5] == board[7] and board[7] != mark):
+    elif(board[3] == board[5] and board[5] == board[7] and board[7] == mark):
         return True
     else:
         return False
 
 
 # MAIN CODE
-
+print()
+print()
 printBoard(board)
 while not(checkWin()):
-    compMove()
+    
     playerMove()
+    compMove()
